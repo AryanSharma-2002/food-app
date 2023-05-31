@@ -1,0 +1,1326 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="https://kit.fontawesome.com/12143e2967.js" crossorigin="anonymous"></script>
+    <title>Food Project</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,400;1,500;1,700&display=swap');
+
+
+
+        *,
+        *::after,
+        *::before {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+
+        /* default html styling */
+        html {
+            font-size: 62.5%;
+        }
+
+        a {
+            font-size: 1.6rem;
+            text-decoration: none;
+        }
+
+        p,
+        li {
+            font-size: 1.6rem;
+            margin-bottom: 0.5em;
+        }
+
+        h1,
+        h2,
+        h3 {
+            margin-bottom: 0.5em;
+            font-weight: 700;
+        }
+
+        ul li {
+            list-style: none;
+        }
+
+        /* ############# utility class ############# */
+
+        /* to center */
+        .container-center {
+            display: block;
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* for text color */
+        .text-black {
+            color: black;
+        }
+
+        .text-white {
+            color: #fff;
+        }
+
+        .text-gray {
+            color: #666666;
+        }
+
+        .text-green {
+            color: #117964;
+        }
+
+        /* for background */
+        .bg-green {
+            background-color: rgb(19, 151, 122);
+        }
+
+        .bg-light-gray {
+            background-color: #ededf3e7;
+            /* background-color: #5e5e685d; */
+        }
+
+        .bg-dark-gray {
+            background-color: #414141;
+        }
+
+        /* for fonts */
+        .lg-font {
+            font-size: 3.2rem;
+        }
+
+        .md-font {
+            font-size: 2.5rem;
+        }
+
+        .small-font {
+            font-size: 2rem;
+        }
+
+        .normal-font {
+            font-size: 1.6rem;
+        }
+
+        .extra-small-font {
+            font-size: 1.2rem;
+        }
+
+        .btn {
+            /* border: 2px solid red; */
+            color: white;
+            text-transform: uppercase;
+            padding: 0.5em 1.5em;
+            border-radius: 4rem;
+            display: inline-block;
+            margin-top: 0.5em;
+        }
+
+        .gold-star {
+            color: #ff9529;
+            font-size: 2rem;
+
+        }
+
+        /* ############# navigation styling ############# */
+        .up {
+            position: fixed;
+            top: 0%;
+            left: 0%;
+            width: 100%;
+            z-index: 200;
+        }
+
+        .nav-right input[type="checkbox"],
+        .nav-right .hamburger-lines {
+            display: none;
+        }
+
+        .nav-bar {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .logo {
+            margin: 0;
+            margin: 0.5em 0;
+        }
+
+        .nav-bar .nav-right {
+            width: 50%;
+
+        }
+
+        .nav-right .nav-items {
+            /* border: 2px solid green; */
+            display: flex;
+            justify-content: space-between;
+            height: 100%;
+            align-items: center;
+        }
+
+        .nav-right .nav-items .item a {
+            font-size: 2rem;
+            color: inherit;
+        }
+
+        .nav-right .nav-items .item a:hover {
+            color: rgb(19, 151, 122);
+        }
+
+
+        /* ############# header styling ############# */
+        .header {
+            height: 70vh;
+            /* border: 4px solid black; */
+            position: relative;
+        }
+
+        .header .header-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.8;
+        }
+
+        .header .content-box {
+            /* border: 2px solid green; */
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            padding: 1em;
+        }
+
+        /* ############# about us section styling #############*/
+        section.about-us {
+            /* border: 2px solid red; */
+            padding: 6rem 0;
+        }
+
+        section.about-us .about-wrapper {
+            height: 350px;
+            display: flex;
+            padding: 1em;
+        }
+
+        .about-wrapper .about-content {
+            /* border: 2px solid black; */
+            width: 55%;
+            height: 100%;
+            padding: 1em;
+            animation: move-LR 2s ease-in-out 0s 1 alternate none;
+        }
+
+        .about-wrapper .about-img {
+            /* border: 2px solid black; */
+            width: 45%;
+            height: 100%;
+            animation: move-RL 2s ease-in-out 0s 1 alternate none;
+        }
+
+        .about-wrapper .about-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: right;
+        }
+
+        .about-wrapper .about-content .about-heading {
+            font-weight: 500;
+            margin-bottom: 0;
+        }
+
+        .about-wrapper .about-content .about-title {
+            line-height: 1.4em;
+            letter-spacing: 0.2rem;
+        }
+
+        .about-wrapper .about-content .about-para {
+            line-height: 1.5em;
+            word-spacing: 0.3em;
+            letter-spacing: 0.1rem;
+        }
+
+        /* ############# section types of food ############# */
+        section.food-types {
+            /* border: 2px solid black; */
+            margin: 10em 0;
+        }
+
+        /* .food-types .container-center{
+    border: 2px solid green;
+} */
+        .food-types .container-center .food-heading {
+            font-weight: 500;
+            text-align: center;
+        }
+
+        .food-types .container-center .food-imgs {
+            /* border: 3px solid darkgreen; */
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .food-types .container-center .food-imgs .food-box {
+            /* border: 2px solid black; */
+            width: 32%;
+            position: relative;
+        }
+
+        .food-imgs .food-box .food-img {
+            /* border: 2px solid palevioletred; */
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .food-box .food-content {
+            /* border: 2px solid coral; */
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, 40%);
+            text-align: center;
+            opacity: 0;
+            transition: all 500ms ease-out;
+        }
+
+        .food-imgs .food-box::after {
+            content: "";
+            display: inline-block;
+            /* border: 2px solid lightseagreen; */
+            position: absolute;
+            width: 100%;
+            top: 100%;
+            left: 0%;
+            height: 0%;
+            opacity: 0;
+            color: white;
+            transition: all 500ms ease-in-out;
+            z-index: 1;
+        }
+
+        /* when hovers food-content comes to center from bottom and also overlay comes with transition from bottom to top */
+        .food-imgs .food-box:hover .food-content {
+            transform: translate(-50%, -50%);
+            opacity: 1;
+            z-index: 2;
+        }
+
+        .food-imgs .food-box:hover::after {
+            opacity: 1;
+            height: 100%;
+            top: 0;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .btn-food {
+            padding: 1.2em 2em;
+        }
+
+        /* ############# menu-item styling ############# */
+        .food-menu {
+            /* border: 2px solid red; */
+            margin-bottom: 10rem;
+        }
+
+        .menu-wrapper .menu-heading {
+            text-align: center;
+        }
+
+        .menu-items {
+            /* border: 2px solid green; */
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .menu-items .menu-item {
+            width: 50%;
+            /* border: 2px solid black; */
+            display: flex;
+            align-items: center;
+            margin-bottom: 3em;
+        }
+
+        .menu-item .menu-img {
+            width: 50%;
+            /* border: 2px solid lightseagreen; */
+        }
+
+        .menu-item .menu-img img {
+            width: 100%;
+            height: 285px;
+            object-fit: cover;
+            object-position: center;
+            border-radius: 50%;
+        }
+
+        .menu-item .menu-item-content {
+            width: 50%;
+            /* border: 2px solid palevioletred; */
+            padding-left: 1em;
+            overflow-wrap: break-word;
+        }
+
+        .menu-item-content h2 {
+            font-weight: 500;
+        }
+
+
+
+
+        /* ############# customers feedback styling ############# */
+
+        .customers {
+            /* border: 2px solid black; */
+            padding: 10rem 0;
+            margin-bottom: 10rem;
+        }
+
+        /* .customers .container-center{
+    border: 3px solid goldenrod;
+} */
+        .container-center .customer-heading {
+            font-weight: 500;
+            text-align: center;
+            text-transform: uppercase;
+        }
+
+        .container-center .feedbacks {
+            /* border: 3px solid darkcyan; */
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+            padding: 2em;
+        }
+
+        .feedbacks .feedback {
+            width: 32%;
+            text-align: center;
+            /* border: 2px solid darkred; */
+        }
+
+        .feedback .customer-img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .feedback span h2 {
+            font-weight: 500;
+        }
+
+        .feedback .ratings {
+            margin-bottom: 1.5em;
+        }
+
+
+
+
+
+        /* ############# contact us styling ############# */
+        .contact-us {
+            /* border: 2px solid brown;  */
+            background-color: #e2e2e2;
+            padding: 6rem 0;
+        }
+
+        .contact-us .container-center {
+            /* border: 2px solid coral; */
+            display: flex;
+        }
+
+        .contact-img,
+        .contact-form {
+            width: 50%;
+            /* border: 2px solid black; */
+            background-color: white;
+        }
+
+        .contact-img {
+            padding-bottom: 1rem;
+        }
+
+        .contact-form {
+            padding: 1rem;
+        }
+
+        .contact-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .contact-form input {
+            outline: none;
+            display: block;
+            width: 100%;
+            border-width: 2px;
+            border-style: none none solid none;
+            border-color: #666;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-form textarea {
+            border-width: 2px;
+            border-style: none none solid none;
+            border-color: #666;
+            display: inline-block;
+            width: 100%;
+            margin-bottom: 1rem;
+        }
+
+        .contact-form input[type="submit"] {
+            width: auto;
+            margin: 0 auto;
+            padding: 1.2rem 3rem;
+        }
+
+        /* ############# footer styling ############# */
+        footer {
+            display: flex;
+            justify-content: center;
+        }
+
+        footer .footer-heading {
+            margin: 1em 0;
+            text-align: center;
+        }
+
+
+
+
+
+        /*############# animations used ############# */
+        /* used in about-content */
+        @keyframes move-LR {
+            from {
+                transform: translate(-120%);
+            }
+
+            to {
+                transform: translate(0);
+            }
+        }
+
+        /* used in about-img */
+        @keyframes move-RL {
+            from {
+                transform: translate(120%);
+            }
+
+            to {
+                transform: translate(0);
+            }
+        }
+
+
+        /* Responsiveness using media queries */
+        @media (max-width:500px) {
+
+            /* navbar */
+            /* make a hamburger menu */
+            html {
+                font-size: 8px;
+            }
+
+            .nav-bar {
+                flex-direction: row-reverse;
+            }
+
+            .nav-right input[type="checkbox"],
+            .nav-right .hamburger-lines {
+                display: inline-block;
+            }
+
+            .nav-bar .nav-right {
+                width: auto;
+
+            }
+
+            .nav-right .nav-items {
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: flex-end;
+                /* border: 2px solid green; */
+                position: absolute;
+                background-color: rgba(255, 255, 255, 0.849);
+                top: 0;
+                left: 0;
+                height: 100vh;
+                padding: 10rem 2rem 7rem 7rem;
+                transform: translateX(-120%);
+                transition: transform 1s ease-out;
+            }
+
+            input[type="checkbox"]:checked~.nav-items {
+                transform: translateX(0);
+            }
+
+            .nav-items .item {
+                margin-bottom: 2rem;
+                color: black;
+            }
+
+            .nav-bar .nav-items .item a {
+                font-size: 2.5rem;
+            }
+
+            .nav-right input[type="checkbox"] {
+                display: inline-block;
+                width: 5rem;
+                height: 4rem;
+                position: absolute;
+                top: 2rem;
+                left: 2rem;
+                z-index: 5;
+                opacity: 0;
+            }
+
+            .nav-right .hamburger-lines {
+                /* border: 2px solid darkcyan ; */
+                width: 5rem;
+                height: 4rem;
+                position: absolute;
+                top: 2rem;
+                left: 2rem;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                z-index: 2;
+
+            }
+
+            .hamburger-lines .line {
+                height: 5px;
+                background: #000;
+                border-radius: 1rem;
+                transform-origin: left center;
+                transform: rotate(0);
+                transition: transform 500ms ease-in-out;
+            }
+
+            input[type="checkbox"]:checked~.hamburger-lines .line-1 {
+                transform: rotate(45deg);
+            }
+
+            input[type="checkbox"]:checked~.hamburger-lines .line-2 {
+                opacity: 0;
+            }
+
+            input[type="checkbox"]:checked~.hamburger-lines .line-3 {
+                transform: rotate(-45deg);
+            }
+
+
+            /* header section */
+            .header {
+                height: 50vh;
+            }
+
+            .header .content-box .content-heading {
+                display: none;
+            }
+
+            /* about us section */
+            /* about-wrapper > about-content > about img  */
+            section.about-us .about-wrapper {
+                flex-direction: column;
+                height: auto;
+            }
+
+            .about-wrapper .about-content,
+            .about-wrapper .about-img {
+                width: 100%;
+                text-align: center;
+                height: auto;
+            }
+
+            /* types of food section */
+            /* food-types > container-center > food-imgs > food-box--> img tag and food-content  */
+            .container-center .food-imgs {
+                flex-direction: column;
+            }
+
+            .food-types .container-center .food-imgs .food-box {
+                width: 100%;
+                margin-bottom: 3rem;
+            }
+
+            /* menu-items */
+            /* section.food-menu > menu-wrapper --> h2 and menu-items > 6 menu-item ---> menu-img and menu-item-content */
+            .food-menu .menu-wrapper .menu-items {
+                flex-direction: column;
+            }
+
+            .food-menu .menu-wrapper .menu-items .menu-item {
+                width: 100%;
+            }
+
+            .menu-items .menu-item {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .menu-item .menu-img {
+                width: 70%;
+            }
+
+            .menu-item .menu-item-content {
+                width: 100%;
+            }
+
+            .menu-items .menu-item .menu-img img {
+                height: 230px;
+            }
+
+            /* customers feedbacks  */
+            /* section.customers > .container-center --> h2 and .feedbacks > .feedback */
+            section.customers .container-center .feedbacks {
+                flex-direction: column;
+            }
+
+            .feedbacks .feedback {
+                width: 100%;
+                margin-bottom: 3em;
+            }
+
+            /* contact-us  */
+            /* section.contact-us > .container-center ---> .contact-img and .contact-form */
+            section.contact-us .container-center {
+                flex-direction: column;
+                padding: 1rem;
+                background: white;
+            }
+
+            .container-center .contact-img {
+                width: 100%;
+                height: 400px;
+            }
+
+            .container-center .contact-form {
+                width: 100%;
+            }
+
+            /* footer */
+            footer .footer-heading {
+                text-align: center;
+            }
+        }
+
+        @media (min-width:500px) and (max-width: 768px) {
+
+            /* navbar */
+            /* make a hamburger menu */
+            html {
+                font-size: 9px;
+            }
+
+            .nav-right input[type="checkbox"],
+            .nav-right .hamburger-lines {
+                display: inline-block;
+            }
+
+            .nav-bar .nav-right {
+                width: auto;
+
+            }
+
+            .nav-right .nav-items {
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: flex-end;
+                /* border: 2px solid green; */
+                position: absolute;
+                background-color: rgba(255, 255, 255, 0.849);
+                top: 0;
+                right: 0;
+                height: 100vh;
+                padding: 10rem 2rem 7rem 7rem;
+                transform: translateX(120%);
+                transition: transform 1s ease-out;
+            }
+
+            input[type="checkbox"]:checked~.nav-items {
+                transform: translateX(0);
+            }
+
+            .nav-items .item {
+                margin-bottom: 2rem;
+                color: black;
+            }
+
+            .nav-bar .nav-items .item a {
+                font-size: 2.5rem;
+            }
+
+            .nav-right input[type="checkbox"] {
+                display: inline-block;
+                width: 5rem;
+                height: 4rem;
+                position: absolute;
+                top: 2rem;
+                right: 2rem;
+                z-index: 5;
+                opacity: 0;
+            }
+
+            .nav-right .hamburger-lines {
+                /* border: 2px solid darkcyan ; */
+                width: 5rem;
+                height: 4rem;
+                position: absolute;
+                top: 2rem;
+                right: 2rem;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                z-index: 2;
+
+            }
+
+            .hamburger-lines .line {
+                height: 5px;
+                background: #000;
+                border-radius: 1rem;
+                transform-origin: left center;
+                transform: rotate(0);
+                transition: transform 500ms ease-in-out;
+            }
+
+            input[type="checkbox"]:checked~.hamburger-lines .line-1 {
+                transform: rotate(45deg);
+            }
+
+            input[type="checkbox"]:checked~.hamburger-lines .line-2 {
+                opacity: 0;
+            }
+
+            input[type="checkbox"]:checked~.hamburger-lines .line-3 {
+                transform: rotate(-45deg);
+            }
+
+            /* header section */
+            .header {
+                height: 50vh;
+            }
+
+            .header .content-box .content-heading {
+                display: none;
+            }
+
+            /* about us section */
+            /* about-wrapper > about-content > about img  */
+            section.about-us .about-wrapper {
+                flex-direction: column;
+                height: auto;
+            }
+
+            .about-wrapper .about-content,
+            .about-wrapper .about-img {
+                width: 100%;
+                text-align: center;
+                height: auto;
+            }
+
+            /* types of food section */
+            /* food-types > container-center > food-imgs > food-box--> img tag and food-content  */
+            .container-center .food-imgs {
+                flex-direction: column;
+            }
+
+            .food-types .container-center .food-imgs .food-box {
+                width: 100%;
+                margin-bottom: 3rem;
+            }
+
+            /* menu-items */
+            /* section.food-menu > menu-wrapper --> h2 and menu-items > 6 menu-item ---> menu-img and menu-item-content */
+            .food-menu .menu-wrapper .menu-items {
+                flex-direction: column;
+            }
+
+            .food-menu .menu-wrapper .menu-items .menu-item {
+                width: 100%;
+            }
+
+            .menu-items .menu-item {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .menu-item .menu-img {
+                width: 70%;
+            }
+
+            .menu-item .menu-item-content {
+                width: 100%;
+            }
+
+            .menu-items .menu-item .menu-img img {
+                height: 350px;
+            }
+
+            /* customers feedbacks  */
+            /* section.customers > .container-center --> h2 and .feedbacks > .feedback */
+            section.customers .container-center .feedbacks {
+                flex-direction: column;
+            }
+
+            .feedbacks .feedback {
+                width: 100%;
+                margin-bottom: 3em;
+            }
+
+            /* contact-us  */
+            /* section.contact-us > .container-center ---> .contact-img and .contact-form */
+            section.contact-us .container-center {
+                flex-direction: column;
+                padding: 1rem;
+                background: white;
+            }
+
+            .container-center .contact-img {
+                width: 100%;
+                height: 400px;
+            }
+
+            .container-center .contact-form {
+                width: 100%;
+            }
+
+            /* footer */
+            footer .footer-heading {
+                text-align: center;
+            }
+        }
+
+        @media (min-width: 769px) and (max-width: 1024px) {
+
+            html {
+                font-size: 10px;
+            }
+
+            /* navbar */
+            .nav-bar {
+                flex-direction: column;
+            }
+
+            .nav-bar .nav-left,
+            .nav-bar .nav-right {
+                width: 100%;
+                text-align: center;
+            }
+
+            /* about us section */
+            /* about-wrapper > about-content > about img  */
+            section.about-us .about-wrapper {
+                flex-direction: column;
+                height: auto;
+            }
+
+            .about-wrapper .about-content,
+            .about-wrapper .about-img {
+                width: 100%;
+                text-align: center;
+            }
+
+            .about-wrapper .about-img img {
+                height: 400px;
+                object-fit: cover;
+                object-position: right;
+                width: 80%;
+            }
+
+            /* types of food section  */
+            .food-box .food-content {
+                transform: translate(-50%, -30%);
+                transition: all 200ms;
+            }
+
+            /* menu-items */
+            /* section.food-menu > menu-wrapper --> h2 and menu-items > 6 menu-item ---> menu-img and menu-item-content */
+            .food-menu .menu-wrapper .menu-items {
+                flex-direction: column;
+            }
+
+            .food-menu .menu-wrapper .menu-items .menu-item {
+                width: 100%;
+            }
+
+            .menu-items .menu-item {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .menu-item .menu-img {
+                width: 40%;
+            }
+
+            .menu-item .menu-item-content {
+                width: 100%;
+            }
+
+            .menu-items .menu-item .menu-img img {
+                height: 350px;
+            }
+
+            /* customers feedbacks  */
+            /* section.customers > .container-center --> h2 and .feedbacks > .feedback */
+            section.customers .container-center .feedbacks {
+                flex-direction: column;
+            }
+
+            .feedbacks .feedback {
+                width: 100%;
+                margin-bottom: 3em;
+            }
+
+            /* contact-us  */
+            /* section.contact-us > .container-center ---> .contact-img and .contact-form */
+            section.contact-us .container-center {
+                flex-direction: column;
+                padding: 1rem;
+                background: white;
+            }
+
+            .container-center .contact-img {
+                width: 100%;
+                height: 400px;
+            }
+
+            .container-center .contact-form {
+                width: 100%;
+            }
+
+            /* footer */
+            footer .footer-heading {
+                text-align: center;
+            }
+
+        }
+
+        @media (max-height: 500px) and (orientation: landscape) {
+            .header {
+                height: 50vmax;
+            }
+        }
+
+        @media (min-height: 1000px) and (max-width:1000px) {
+            .header {
+                height: 50vmin;
+            }
+
+            .menu-items .menu-item .menu-img {
+                width: 50%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="up  bg-light-gray">
+        <nav class="nav-bar container-center">
+            <div class="nav-left">
+                <h1 class="logo lg-font">FW</h1>
+            </div>
+            <div class="nav-right">
+                <input type="checkbox">
+                <div class="hamburger-lines">
+                    <div class="line line-1"></div>
+                    <div class="line line-2"></div>
+                    <div class="line line-3"></div>
+                </div>
+                <ul class="nav-items md-font text-gray">
+                    <li class="item item-1"><a href="#">Home</a></li>
+                    <li class="item item-2"><a href="#">About</a></li>
+                    <li class="item item-3"><a href="#">Category</a></li>
+                    <li class="item item-4"><a href="#">Menu</a></li>
+                    <li class="item item-5"><a href="#">Testimonial</a></li>
+                    <li class="item item-6"><a href="#">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+    <!-- header section -->
+    <header class="header" id="home">
+        <img src="./header-image2.jpg" alt="header image" class="header-img">
+        <div class="content-box">
+            <h1 class="md-font content-heading">EAT RIGHT FOOD</h1>
+            <p>Eat healthy food, it is good for health.</p>
+            <a href="#" class="btn small-font bg-green">MENU</a>
+        </div>
+    </header>
+
+    <!-- about us section -->
+    <section class="about-us bg-light-gray" id="about">
+        <div class="container-center about-wrapper">
+            <div class="about-content">
+                <h2 class="normal-font text-gray about-heading">About Us</h2>
+                <h2 class="lg-font about-title">We've been making healthy food for last 10 years</h2>
+                <p class="about-para">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugiat amet cum aliquid
+                    dignissimos quasi obcaecati quia ipsum aliquam! Illo, esse. Suscipit doloribus eaque cumque
+                    consectetur, repudiandae atque quo optio aspernatur accusamus sit vitae explicabo sequi debitis
+                    eveniet provident dolore perspiciatis inventore dolorem tempore ab laboriosam. Repudiandae eligendi
+                    quos animi quae.</p>
+            </div>
+            <div class="about-img">
+                <img src="./about-photo.jpg" alt="strawberries in bowl">
+            </div>
+        </div>
+    </section>
+
+
+    <section class="food-types" id="category">
+        <div class="container-center">
+            <h2 class="food-heading lg-font text-gray">TYPES OF FOOD</h2>
+            <div class="food-imgs">
+                <div class="food-box">
+                    <img src="./food1.jpg" alt="food 1" class="food-img food-1">
+                    <div class="food-content">
+                        <h2 class="food-desc lg-font text-white">Fruit</h2>
+                        <a href="#" class="btn btn-food extra-small-font bg-green">Learn More</a>
+                    </div>
+                </div>
+                <div class="food-box">
+                    <img src="./food2.jpg" alt="food 2" class="food-img food-2">
+                    <div class="food-content">
+                        <h2 class="food-desc lg-font text-white">Vegetable</h2>
+                        <a href="#" class="btn btn-food extra-small-font bg-green">Learn More</a>
+                    </div>
+                </div>
+                <div class="food-box">
+                    <img src="./food3.jpg" alt="food 3" class="food-img food-3">
+                    <div class="food-content">
+                        <h2 class="food-desc lg-font text-white">Grain</h2>
+                        <a href="#" class="btn btn-food extra-small-font bg-green">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- food menu section -->
+    <section class="food-menu" id="menu">
+        <div class="container-center menu-wrapper">
+            <h2 class="menu-heading lg-font text-gray">FOOD MENU</h2>
+            <div class="menu-items">
+                <div class="menu-item">
+                    <div class="menu-img">
+                        <img src="./food-menu1.jpg" alt="food menu 1">
+                    </div>
+                    <div class="menu-item-content">
+                        <h2 class="md-font text-gray">Food Menu Item 1</h2>
+                        <p class="text-gray">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad, mollitia.</p>
+                        <h3 class="text-green extra-small-font">Price: &#8377; 250</h3>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-img">
+                        <img src="./food-menu2.jpg" alt="food menu 2">
+                    </div>
+                    <div class="menu-item-content">
+                        <h2 class="md-font text-gray">Food Menu Item 2</h2>
+                        <p class="text-gray">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad, mollitia.</p>
+                        <h3 class="text-green extra-small-font">Price: &#8377; 260</h3>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-img">
+                        <img src="./food-menu3.jpg" alt="food menu 3">
+                    </div>
+                    <div class="menu-item-content">
+                        <h2 class="md-font text-gray">Food Menu Item 3</h2>
+                        <p class="text-gray">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad, mollitia.</p>
+                        <h3 class="text-green extra-small-font">Price: &#8377; 270</h3>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-img">
+                        <img src="./food-menu4.jpg" alt="food menu 4">
+                    </div>
+                    <div class="menu-item-content">
+                        <h2 class="md-font text-gray">Food Menu Item 4</h2>
+                        <p class="text-gray">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad, mollitia.</p>
+                        <h3 class="text-green extra-small-font">Price: &#8377; 150</h3>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-img">
+                        <img src="./food-menu5.jpg" alt="food menu 5">
+                    </div>
+                    <div class="menu-item-content">
+                        <h2 class="md-font text-gray">Food Menu Item 5</h2>
+                        <p class="text-gray">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad, mollitia.</p>
+                        <h3 class="text-green extra-small-font">Price: &#8377; 270</h3>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-img">
+                        <img src="./food-menu6.jpg" alt="food menu 6">
+                    </div>
+                    <div class="menu-item-content">
+                        <h2 class="md-font text-gray">Food Menu Item 6</h2>
+                        <p class="text-gray">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad, mollitia.</p>
+                        <h3 class="text-green extra-small-font">Price: &#8377; 230</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- section of customer's feedback -->
+    <section class="customers bg-light-gray" id="testimonial">
+        <div class="container-center">
+            <h2 class="customer-heading lg-font text-gray">What our customers say</h2>
+            <div class="feedbacks">
+                <div class="feedback feedback-1">
+                    <div class="ratings">
+                        <i class="fas fa-star gold-star"></i>
+                        <i class="fas fa-star gold-star"></i>
+                        <i class="fas fa-star gold-star"></i>
+                        <i class="fas fa-star gold-star"></i>
+                        <i class="fas fa-star gold-star"></i>
+                    </div>
+                    <p class="text-gray">Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis
+                        laboriosam maiores minima, reiciendis voluptate, inventore error harum ea doloremque accusamus
+                        nesciunt eveniet hic facilis quasi?</p>
+                    <span>
+                        <img src="./male-photo1.jpg" alt="first customer" class="customer-img">
+                        <h2 class="small-font text-black">John Doe</h2>
+                    </span>
+                </div>
+                <div class="feedback feedback-2">
+                    <div class="ratings">
+                        <i class="fas fa-star gold-star"></i>
+                        <i class="fas fa-star gold-star"></i>
+                        <i class="fas fa-star gold-star"></i>
+                        <i class="fas fa-star gold-star"></i>
+                        <i class="fas fa-star gold-star"></i>
+                    </div>
+                    <p class="text-gray">Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis
+                        laboriosam maiores minima, reiciendis voluptate, inventore error harum ea doloremque accusamus
+                        nesciunt eveniet hic facilis quasi?</p>
+                    <span>
+                        <img src="./male-photo2.jpg" alt="first customer" class="customer-img">
+                        <h2 class="small-font text-black">Jai Doe</h2>
+                    </span>
+
+                </div>
+                <div class="feedback feedback-3">
+                    <div class="ratings">
+                        <i class="fas fa-star gold-star"></i>
+                        <i class="fas fa-star gold-star"></i>
+                        <i class="fas fa-star gold-star"></i>
+                        <i class="fas fa-star gold-star"></i>
+                        <i class="fas fa-star gold-star"></i>
+                    </div>
+                    <p class="text-gray">Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis
+                        laboriosam maiores minima, reiciendis voluptate, inventore error harum ea doloremque accusamus
+                        nesciunt eveniet hic facilis quasi?</p>
+                    <span>
+                        <img src="./male-photo3.jpg" alt="first customer" class="customer-img">
+                        <h2 class="small-font text-black">Jolly Doe</h2>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- contact us section -->
+    <section class="contact-us" id="contact">
+        <div class="container-center">
+            <div class="contact-img">
+                <img src="./restraunt-image.jpg " alt="contact-restaurant image">
+            </div>
+            <form action="" class="contact-form">
+                <h2 class="contact-heading lg-font text-black">Contact Us</h2>
+
+                <input type="text" name="name" id="name" placeholder="Name">
+                <input type="email" name="email" id="email" placeholder="Email">
+                <textarea name="message" id="message" cols="30" rows="10">Type your message here</textarea>
+                <input type="submit" value="submit" class="btn bg-green">
+            </form>
+        </div>
+
+    </section>
+
+    <!-- lets create the footer  -->
+    <footer class="bg-dark-gray">
+        <div class="container-center">
+            <h2 class="footer-heading text-white lg-font">Restaurant Website, &copy; all rights reserved.</h2>
+        </div>
+    </footer>
+
+
+    <script>
+        // lets try to implement the smooth scroll in all anchor tags in nav items 
+        var navMenuAnchorTags = document.querySelectorAll(".nav-items a");
+        console.log(navMenuAnchorTags);
+        for (let i = 0; i < navMenuAnchorTags.length; i++) {
+            navMenuAnchorTags[i].addEventListener("click", function (e) {
+                e.preventDefault();
+
+                var targetSectionID = this.textContent.trim().toLowerCase();
+                console.log(targetSectionID);
+
+                var targetSection = document.getElementById(targetSectionID);
+                console.log(targetSection);
+                // this is done scrolling from top to down only
+                // var id=setInterval(function () {
+                //     var targetSectionCoordinates = targetSection.getBoundingClientRect();
+                //     if (targetSectionCoordinates.top <= 0) {
+                //         clearInterval(id);
+                //         return;
+                //     }
+                //     window.scrollBy(0, 10);
+                // }, 10);
+
+                // if want that scrolling also when down on page and selected home means scrolling from bottom to top
+                var initialCoordinates = targetSection.getBoundingClientRect().top;
+                if (initialCoordinates >= 0) {
+                    var id = setInterval(function () {
+                        var targetSectionCoordinates = targetSection.getBoundingClientRect();
+                        if (targetSectionCoordinates.top <= 0) {
+                            clearInterval(id);
+                            return;
+                        }
+                        window.scrollBy(0, 10);
+                    }, 10);
+                }
+                else {
+                    var id = setInterval(function () {
+                        var targetSectionCoordinates = targetSection.getBoundingClientRect();
+                        if (targetSectionCoordinates.top >= 0) {
+                            clearInterval(id);
+                            return;
+                        }
+                        window.scrollBy(0, -10);
+                    }, 10);
+                }
+            });
+
+        }
+    </script>
+</body>
+
+</html>

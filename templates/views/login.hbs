@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/login.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <section class="contact-us" id="contact">
+        <div class="container-center demo-wrap">
+            <form action="/login" method="POST" class="contact-form">
+                <h2 class="contact-heading lg-font text-black">Login Here</h2>
+                <div class="all-inputs">
+                    <input type="email" name="email" id="email" placeholder="Email" required>
+                    <input type="password" name="password" id="password" placeholder="Enter password" required>
+                </div>
+                <input type="submit" value="submit" class="btn bg-green">
+                <div class="sign-up-container">
+                    <p class="sign-up-heading">Not Registered?</p>
+                    <a href='/register' class="sign-up-link">Register</a>
+                </div>
+                <div class="wrong-message">
+                    <p class="message-content">{{message}}</p>
+                </div>
+            </form>
+        </div>
+
+    </section>
+</body>
+
+</html>
