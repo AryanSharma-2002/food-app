@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 mongoose
-  .connect(`mongodb://0.0.0.0:${process.env.DB_PORT}/${process.env.DB_NAME}`)
+  .connect(process.env.MONGO_URI)
   .then(() => {
     console.log("connection successful with mongodb");
   })

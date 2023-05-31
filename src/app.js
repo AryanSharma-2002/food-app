@@ -17,7 +17,6 @@ const cookieParser = require("cookie-parser");
 const publicPath = path.join(__dirname, "../public/");
 const viewPath = path.join(__dirname, "../templates/views/");
 const partialPath = path.join(__dirname, "../templates/partials/");
-
 // var anchorTag = document.getElementById("logout");
 // anchorTag.href = "javascript:void(0)";
 app.set("view engine", "hbs");
@@ -48,7 +47,7 @@ app.get("/", (req, res) => {
   // res.send({message:"hello connection"})
 });
 
-const port = process.env.PORT;
+const port = process.env.PORT || 5000;
 
 app.listen(port, "127.0.0.1", () => {
   console.log(`connection successfull with port no. ${port}`);
